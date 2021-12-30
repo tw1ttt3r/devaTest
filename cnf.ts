@@ -12,6 +12,8 @@ const fileEnv = `src/environments/${production ? 'environment.prod' : 'environme
 const contentFile = `export const environment = {
     production: ${production},
     dataUrl: '${process.env['DATA_URL']}',
+    max_characters_message: ${process.env['MAX_CHARACTERS_MESSAGE']},
+    url_service_post: '${process.env['URL_SERVICE_POST']}'
 }`;
 
 writeFile(fileEnv, contentFile, (err) => {
