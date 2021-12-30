@@ -1,0 +1,27 @@
+<section class="w-full">
+  <form [formGroup]="contacForm" class="w-3/4 mx-auto flex flex-col justify-center" (submit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="name" matInput required>
+      <mat-error *ngIf="contacForm.controls?.['name']?.errors?.['required']">Información obligatoria</mat-error>
+      <mat-error *ngIf="contacForm.controls?.['name']?.errors?.['pattern']">Información no válida</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput formControlName="email" placeholder="email@example.com" required>
+      <mat-error *ngIf="contacForm.controls?.['email']?.errors?.['required']">Información obligatoria</mat-error>
+      <mat-error *ngIf="contacForm.controls?.['email']?.errors?.['email']">Formato de email inválido</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone" placeholder="+0000000000000" required [maxlength]="(maxPhoneCharacters + 1)">
+      <mat-error *ngIf="contacForm.controls?.['phone']?.errors?.['required']">Información obligatoria</mat-error>
+      <mat-error *ngIf="contacForm.controls?.['phone']?.errors?.['pattern']">Información no válida</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Mensaje</mat-label>
+      <textarea matInput formControlName="message" [placeholder]="placeholderMessage" [maxlength]="maxCharsMessage" rows="10" cols="30"></textarea>
+    </mat-form-field>
+    <button mat-raised-button>Save</button>
+  </form>
+</section>
